@@ -6,7 +6,7 @@ import { InputProps } from '../../@types/components/Input';
 
 import { styles } from './style';
 
-const Input: React.FC<InputProps> = ({ onChangeText, value, secureTextEntry, disabled, placeholder, icon, style }) => {
+const Input: React.FC<InputProps> = ({ onChangeText, value, secureTextEntry, disabled, placeholder, icon, leftIcon, style }) => {
 	const [isSecure, setIsSecure] = React.useState<boolean | undefined>(secureTextEntry);
 
 	return (
@@ -16,7 +16,8 @@ const Input: React.FC<InputProps> = ({ onChangeText, value, secureTextEntry, dis
 				textContentType='oneTimeCode'
 				activeUnderlineColor='transparent'
 				underlineColor='transparent'
-				placeholderTextColor='#A0A5BA'
+				placeholderTextColor='#676767'
+				left={leftIcon}
 				right={secureTextEntry ? <TextInput.Icon color='#32343E' onPress={() => setIsSecure((prev) => !prev)} icon='eye' /> : icon}
 				style={[styles.input, style]}
 				placeholder={placeholder}

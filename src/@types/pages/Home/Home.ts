@@ -1,14 +1,15 @@
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-export type HomeStackParamList = {
-	Home: undefined;
-};
+import { BottomTabParamList } from '../../../navigation/MainStack';
+import { RootStackParamList } from '../../../navigation/RootStack';
+import { ModalStackParamList } from '../../../navigation/ModalStack';
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<HomeStackParamList, 'Home'>;
-type HomeScreenRouteProp = RouteProp<HomeStackParamList, 'Home'>;
+type MainNavigationProp = CompositeNavigationProp<NativeStackNavigationProp<ModalStackParamList, 'Basket'>, NativeStackNavigationProp<RootStackParamList>>;
 
-export type HomeProps = {
-	navigation?: HomeScreenNavigationProp;
-	route?: HomeScreenRouteProp;
+export type HomeProps<RouteName extends keyof BottomTabParamList> = {
+	navigation: CompositeNavigationProp<BottomTabNavigationProp<BottomTabParamList, RouteName>, MainNavigationProp>;
+	route: RouteProp<BottomTabParamList, RouteName>;
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 
-import HomeStackNavigator from './src/navigation/HomeStack';
+import RootStack from './src/navigation/RootStack';
 
 const App: React.FC = () => {
 	const [fontsLoaded] = Font.useFonts({
@@ -14,7 +14,11 @@ const App: React.FC = () => {
 		return null;
 	}
 
-	return <HomeStackNavigator />;
+	return (
+		<React.Fragment>
+			<RootStack />
+		</React.Fragment>
+	);
 };
 
 export default App;

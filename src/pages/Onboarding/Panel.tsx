@@ -21,7 +21,7 @@ const Panel: React.FC = () => {
 			DoneButtonComponent={(props: DoneButtonProps) => (
 				<TouchableOpacity
 					onPress={() => {
-						console.log('press');
+						console.log('go to home page.');
 					}}>
 					{/* @ts-ignore */}
 					<Image style={styles.done} source={require('../../assets/icons/Check.png')} />

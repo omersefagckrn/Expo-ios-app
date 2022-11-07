@@ -8,4 +8,5 @@ export type InputProps = {
 	placeholder?: string;
 	icon?: React.ReactNode;
 	style?: StyleProp<ViewStyle>;
+	leftIcon?: React.ReactNode;
 };

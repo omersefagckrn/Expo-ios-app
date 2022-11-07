@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { KeyboardAvoidingView, Platform, SafeAreaView, Text, View } from 'react-native';
 
-import { AuthPanel } from '../../../@types/pages';
+import type { AuthPanel } from '../../../@types/pages';
+
 import { styles } from './style';
 
 const Panel: React.FC<AuthPanel> = ({ title, subTitle, children }) => {
