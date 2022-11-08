@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 
+import Toast from 'react-native-toast-message';
+
 import RootStack from './src/navigation/RootStack';
 
 const App: React.FC = () => {
@@ -17,6 +19,7 @@ const App: React.FC = () => {
 	return (
 		<React.Fragment>
 			<RootStack />
+			<Toast position='top' autoHide visibilityTime={2000} />
 		</React.Fragment>
 	);
 };

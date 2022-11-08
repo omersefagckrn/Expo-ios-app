@@ -3,7 +3,7 @@ import * as Pages from '../pages';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 export type BottomTabParamList = {
 	Home: undefined;

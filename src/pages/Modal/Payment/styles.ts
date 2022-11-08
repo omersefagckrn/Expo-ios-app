@@ -2,28 +2,6 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../../theme/color';
 
 export const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		marginHorizontal: 24
-	},
-	route: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		marginTop: 24
-	},
-	routeChevron: {
-		backgroundColor: colors.blue,
-		padding: 10,
-		/* @ts-ignore */
-		borderRadius: '100%'
-	},
-	routeSubTitle: {
-		color: colors.blue,
-		fontSize: 24,
-		fontWeight: '400',
-		fontFamily: 'Sen-Regular',
-		marginLeft: 20
-	},
 	noCardContainer: {
 		padding: 30,
 		backgroundColor: colors.fadeOrange,
@@ -95,7 +73,8 @@ export const styles = StyleSheet.create({
 		borderRadius: 10,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'center'
+		alignItems: 'center',
+		marginBottom: 8
 	},
 	cardOwnerName: {
 		color: colors.blue,
@@ -123,5 +102,12 @@ export const styles = StyleSheet.create({
 	crossImage: {
 		height: 15,
 		width: 15
+	},
+	errorText: {
+		color: colors.red,
+		fontSize: 14,
+		fontWeight: '400',
+		fontFamily: 'Sen-Regular',
+		marginVertical: 10
 	}
 });
