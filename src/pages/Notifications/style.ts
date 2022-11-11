@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
 		fontSize: 17,
 		fontWeight: '700'
 	},
-	dataContainer: {},
 	notificationContainer: {
 		flexDirection: 'row',
 		borderBottomColor: colors.gray,
@@ -61,6 +60,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: colors.primary,
-		width: 50
+		width: '20%'
 	}
 });

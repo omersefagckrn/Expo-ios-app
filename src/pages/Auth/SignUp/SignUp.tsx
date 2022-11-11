@@ -41,7 +41,7 @@ const Login: React.FC = () => {
 						onSubmit(values);
 					}}>
 					{({ handleSubmit, handleChange, values, errors }: { handleSubmit: () => void; handleChange: FormikHandlers['handleChange']; values: Values; errors: FormikErrors<Values> }) => (
-						<ScrollView pagingEnabled showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+						<ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
 							<View style={styles.inputContainer}>
 								<Text style={styles.label}>İsim</Text>
 								<Input placeholder='İsim' onChangeText={handleChange('fullName')} value={values.fullName} />

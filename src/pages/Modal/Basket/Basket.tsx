@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import type { BasketProps } from '../../../@types/pages/Modal/Basket/Basket';
 
 import { Button } from '../../../components';
 import { styles } from './style';
-import Panel from '../Panel/Panel';
 
 const BasketData = [
 	{
@@ -39,11 +38,7 @@ const BasketData = [
 const Basket: React.FC<BasketProps<'Basket'>> = ({ navigation, route }) => {
 	return (
 		<>
-			<Panel
-				title='Sepetim'
-				onPress={() => {
-					navigation.goBack();
-				}}>
+			<ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
 				<View style={styles.total}>
 					<Text style={styles.totalTitle}>Teslimat adresi</Text>
 					<View style={styles.address}>
@@ -55,10 +50,9 @@ const Basket: React.FC<BasketProps<'Basket'>> = ({ navigation, route }) => {
 					</View>
 					<Button title='Ödemeye geç' onPress={() => navigation.navigate('Payment')} />
 				</View>
-
-				<View>
-					{BasketData?.map((item) => (
-						<View key={item.id} style={styles.basketContainer}>
+				<View style={styles.tabContainer}>
+					{BasketData.map((item) => (
+						<View key={item.id} style={styles.basketInnerContainer}>
 							<View style={styles.imageContainer}>
 								{/* @ts-ignore */}
 								<Image source={require('../../../assets/Onboarding.png')} style={styles.image} />
@@ -84,7 +78,7 @@ const Basket: React.FC<BasketProps<'Basket'>> = ({ navigation, route }) => {
 						</View>
 					))}
 				</View>
-			</Panel>
+			</ScrollView>
 		</>
 	);
 };

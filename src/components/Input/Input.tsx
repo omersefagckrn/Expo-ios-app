@@ -6,12 +6,14 @@ import { InputProps } from '../../@types/components/Input';
 
 import { styles } from './style';
 
-const Input: React.FC<InputProps> = ({ onChangeText, value, secureTextEntry, disabled, placeholder, icon, leftIcon, style }) => {
+const Input: React.FC<InputProps> = ({ onChangeText, value, secureTextEntry, disabled, placeholder, icon, leftIcon, style, render, maxLenght }) => {
 	const [isSecure, setIsSecure] = React.useState<boolean | undefined>(secureTextEntry);
 
 	return (
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<TextInput
+				maxLength={maxLenght}
+				render={render}
 				selectionColor='#32343E'
 				textContentType='oneTimeCode'
 				activeUnderlineColor='transparent'

@@ -48,16 +48,31 @@ export const styles = StyleSheet.create({
 		fontFamily: 'Sen-Bold'
 	},
 	search: {
-		marginHorizontal: 24
+		marginHorizontal: 24,
+		borderRadius: 10,
+		borderTopLeftRadius: 10,
+		borderTopRightRadius: 10,
+		backgroundColor: colors.orange,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		padding: 10
+	},
+	searchText: {
+		color: colors.white,
+		fontWeight: '400',
+		fontSize: 12,
+		textTransform: 'capitalize',
+		fontFamily: 'Sen-Regular'
 	},
 	category: {
-		flexDirection: 'column',
-		marginVertical: 24,
-		marginHorizontal: 24
+		flexDirection: 'column'
 	},
 	categoryText: {
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		marginVertical: 24,
+		marginHorizontal: 24
 	},
 	categoryTitle: {
 		color: colors.primary,

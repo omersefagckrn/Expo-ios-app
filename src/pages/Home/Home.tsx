@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { TextInput } from 'react-native-paper';
 import { View, Text, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import type { HomeProps } from '../../@types/pages';
 
-import { Input, Products } from '../../components';
+import { Products } from '../../components';
 import { styles } from './style';
 
-const data: Array<{ id: number; title: string }> = [
+const data = [
 	{
 		id: 1,
 		title: 'Tesbih'
@@ -27,7 +27,6 @@ const data: Array<{ id: number; title: string }> = [
 ];
 
 const Home: React.FC<HomeProps<'Home'>> = ({ navigation, route }) => {
-	const [search, setSearch] = React.useState<string>('');
 	return (
 		<>
 			<SafeAreaView />
@@ -53,38 +52,38 @@ const Home: React.FC<HomeProps<'Home'>> = ({ navigation, route }) => {
 					</Text>
 				</View>
 				{/* tab -> main */}
-				<View style={styles.search}>
-					<Input leftIcon={<TextInput.Icon color='#A0A5BA' icon='magnify' />} placeholder='Ürün ara yada kategori gir' value={search} onChangeText={(text) => setSearch(text)} />
+				<TouchableOpacity
+					onPress={() => {
+						console.log('search');
+					}}
+					style={styles.search}>
+					<Text style={styles.searchText}>Ürün aramak yada kategori bulmak için tıkla</Text>
+					<Ionicons name='search' size={20} color='#FFFFFF' />
+				</TouchableOpacity>
+
+				<View style={styles.categoryText}>
+					<Text style={styles.categoryTitle}>Kategoriler</Text>
+					<TouchableOpacity style={styles.seeAll}>
+						<Text style={styles.categorySubTitle}>Hepsini gör</Text>
+						<Image style={styles.categoryImage} source={require('../../assets/icons/Rightarrow.png')} />
+					</TouchableOpacity>
 				</View>
 
-				<View style={styles.category}>
-					<View style={styles.categoryText}>
-						<Text style={styles.categoryTitle}>kategoriler</Text>
-						<TouchableOpacity style={styles.seeAll}>
-							<Text style={styles.categorySubTitle}>Hepsini gör</Text>
-							<Image style={styles.categoryImage} source={require('../../assets/icons/Rightarrow.png')} />
-						</TouchableOpacity>
-					</View>
-				</View>
 				<View style={styles.categoryContainer}>
-					<ScrollView horizontal={true} pagingEnabled showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryList}>
-						{data?.map((item) => (
+					<ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryList}>
+						{data.map((item) => (
 							<TouchableOpacity key={item.id} style={styles.listItemContainer}>
-								<Text style={styles.listItem} key={item.id}>
-									{item.title}
-								</Text>
+								<Text style={styles.listItem}>{item.title}</Text>
 							</TouchableOpacity>
 						))}
 					</ScrollView>
 				</View>
-				<View style={styles.category}>
-					<View style={styles.categoryText}>
-						<Text style={styles.categoryTitle}>Ürünler</Text>
-						<TouchableOpacity style={styles.seeAll}>
-							<Text style={styles.categorySubTitle}>Hepsini gör</Text>
-							<Image style={styles.categoryImage} source={require('../../assets/icons/Rightarrow.png')} />
-						</TouchableOpacity>
-					</View>
+				<View style={styles.categoryText}>
+					<Text style={styles.categoryTitle}>Ürünler</Text>
+					<TouchableOpacity style={styles.seeAll}>
+						<Text style={styles.categorySubTitle}>Hepsini gör</Text>
+						<Image style={styles.categoryImage} source={require('../../assets/icons/Rightarrow.png')} />
+					</TouchableOpacity>
 				</View>
 				<Products />
 			</ScrollView>

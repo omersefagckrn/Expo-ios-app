@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
 		backgroundColor: colors.blue,
 		padding: 24,
 		borderRadius: 24,
-		marginVertical: 15
+		marginVertical: 15,
+		marginHorizontal: 20
 	},
 	totalTitle: {
 		color: colors.fadePurple,
@@ -48,7 +49,11 @@ export const styles = StyleSheet.create({
 		fontFamily: 'Sen-Regular',
 		color: colors.primary
 	},
-	basketContainer: {
+	tabContainer: {
+		marginTop: 10,
+		marginHorizontal: 20
+	},
+	basketInnerContainer: {
 		flexDirection: 'row',
 		marginBottom: 30
 	},
@@ -77,10 +82,6 @@ export const styles = StyleSheet.create({
 		textTransform: 'capitalize',
 		maxWidth: 100
 	},
-	crossImage: {
-		width: 27,
-		height: 27
-	},
 	price: {
 		fontWeight: '700',
 		fontFamily: 'Sen-Bold',
@@ -98,16 +99,16 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		marginVertical: 5
 	},
-	increase: {
-		padding: 3
-	},
-	decrease: {
-		padding: 3
-	},
 	itemCount: {
 		marginHorizontal: 10,
 		fontFamily: 'Sen-Bold',
 		fontSize: 16,
 		textTransform: 'capitalize'
+	},
+	bottomContainer: {
+		alignItems: 'center',
+		flexDirection: 'column',
+		paddingVertical: 20,
+		backgroundColor: colors.blue
 	}
 });

@@ -9,4 +9,6 @@ export type InputProps = {
 	icon?: React.ReactNode;
 	style?: StyleProp<ViewStyle>;
 	leftIcon?: React.ReactNode;
+	render?: (props: any) => React.ReactNode;
+	maxLenght?: number;
 };

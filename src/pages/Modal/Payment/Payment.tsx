@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Toast from 'react-native-toast-message';
-import { Animated, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Animated, Image, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 
 import type { PaymentProps } from '../../../@types/pages/Modal/Payment/Payment';
 
-import Panel from '../Panel/Panel';
-
-import { styles } from './styles';
+import { styles } from './style';
 import { Button } from '../../../components';
+
+import * as Haptics from 'expo-haptics';
 
 const cardData = [
 	{
@@ -25,30 +25,15 @@ const cardData = [
 
 const Payment: React.FC<PaymentProps<'Payment'>> = ({ navigation, route }) => {
 	const [selectedCard, setSelectedCard] = React.useState<any>(null);
-	const animatedScale = React.useRef(new Animated.Value(0)).current;
-
-	React.useEffect(() => {
-		animatedScale.setValue(1);
-	}, []);
-
-	const handleCardSelect = () => {
-		animatedScale.setValue(0.9);
-		Animated.spring(animatedScale, {
-			toValue: 1,
-			bounciness: 2,
-			speed: 10,
-			useNativeDriver: true
-		}).start();
-	};
 
 	const isCard = false;
 	return (
 		<>
-			<Panel title='Ödemeyi tamamla' onPress={() => navigation.goBack()}>
-				<>
+			<ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+				<View style={styles.tabContainer}>
 					<View style={styles.totalPriceContainer}>
 						<Text style={styles.totalPrice}>Toplam ödeme:</Text>
-						<Text style={styles.totalPayment}>96₺</Text>
+						<Text style={styles.totalPayment}>₺96</Text>
 					</View>
 
 					{isCard ? (
@@ -57,30 +42,25 @@ const Payment: React.FC<PaymentProps<'Payment'>> = ({ navigation, route }) => {
 								{/* @ts-ignore */}
 								<Image source={require('../../../assets/NoCard.png')} style={styles.noCardImage} />
 								<Text style={styles.noCardTitle}>Henüz kartını eklemedin!</Text>
-								<Text style={styles.noCardSubTitle}>Kartınızı ekledikten sonra kartlarınız burada bulunacaktır.</Text>
+								<Text style={styles.noCardSubTitle}>Kartınızı ekledikten sonra kartlarınız burada görünecektir.</Text>
 							</View>
 							<Button style={styles.addCardButton} title='Yeni Kart Ekle' onPress={() => console.log('ekle')} />
 						</>
 					) : (
 						<>
-							<Text style={styles.paymentMethodTitle}>Ödeme yöntemi seçin.</Text>
+							<Text style={styles.paymentMethodTitle}>Ödeme yöntemi seçin</Text>
 							{cardData.map((card) => (
 								<TouchableOpacity
 									key={card.id}
 									onPress={() => {
-										handleCardSelect();
 										if (selectedCard === null) setSelectedCard(card);
 										else setSelectedCard(null);
+										Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 									}}>
 									<Animated.View
 										style={[
 											styles.cardContainer,
 											{
-												transform: [
-													{
-														scale: animatedScale
-													}
-												],
 												borderWidth: selectedCard?.id === card.id ? 1 : 0,
 												borderColor: '#181C2E'
 											}
@@ -99,7 +79,13 @@ const Payment: React.FC<PaymentProps<'Payment'>> = ({ navigation, route }) => {
 									</Animated.View>
 								</TouchableOpacity>
 							))}
-							<Button style={styles.addCardButton} title='Yeni kart ekle' onPress={() => console.log('ekle')} />
+							<Button
+								style={styles.addCardButton}
+								title='Yeni kart ekle'
+								onPress={() => {
+									navigation.navigate('AddCard');
+								}}
+							/>
 							<Button
 								style={styles.finishPayment}
 								title='Ödemeyi bitir'
@@ -121,8 +107,8 @@ const Payment: React.FC<PaymentProps<'Payment'>> = ({ navigation, route }) => {
 							/>
 						</>
 					)}
-				</>
-			</Panel>
+				</View>
+			</ScrollView>
 		</>
 	);
 };

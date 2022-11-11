@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../../theme/color';
 
 export const styles = StyleSheet.create({
+	tabContainer: {
+		marginHorizontal: 20
+	},
 	noCardContainer: {
 		padding: 30,
 		backgroundColor: colors.fadeOrange,
@@ -62,10 +65,19 @@ export const styles = StyleSheet.create({
 	totalPayment: {
 		fontWeight: '400',
 		fontFamily: 'Sen-Regular',
-		fontSize: 30,
+		fontSize: 20,
 		textTransform: 'capitalize',
 		color: colors.blue,
 		marginLeft: 10
+	},
+
+	changeAddress: {
+		fontSize: 16,
+		fontWeight: '400',
+		fontFamily: 'Sen-Regular',
+		color: colors.blue,
+		textDecorationLine: 'underline',
+		marginVertical: 10
 	},
 	cardContainer: {
 		padding: 18,

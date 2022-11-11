@@ -2,7 +2,7 @@ import * as React from 'react';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { Animated, RefreshControl, ScrollView, Text, View } from 'react-native';
+import { Animated, RefreshControl, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { NoticationsProps } from '../../@types/pages/Notifications/Notifications';
@@ -41,23 +41,23 @@ const Notifications: React.FC<NoticationsProps<'Notifications'>> = () => {
 		wait(1000).then(() => setRefreshing(false));
 	}, []);
 
-	const renderLeftActions = (dragX: any) => {
-		const trans = dragX.interpolate({
-			inputRange: [-50, 0.5],
-			outputRange: [1, 0.1]
+	const renderLeftActions = (progress: any, dragX: any) => {
+		const scale = dragX.interpolate({
+			inputRange: [0, 100],
+			outputRange: [0, 1]
 		});
 		return (
-			<View style={styles.animatedLeftBar}>
+			<TouchableOpacity style={styles.animatedLeftBar}>
 				<Animated.Text
 					style={[
 						styles.anitmatedText,
 						{
-							transform: [{ translateX: trans }]
+							transform: [{ translateX: scale }]
 						}
 					]}>
 					Sil
 				</Animated.Text>
-			</View>
+			</TouchableOpacity>
 		);
 	};
 
@@ -70,23 +70,20 @@ const Notifications: React.FC<NoticationsProps<'Notifications'>> = () => {
 					</View>
 
 					{notificatinData.map((item, index) => (
-						/* @ts-ignore */
-						<Swipeable key={item.id} useNativeAnimations overshootLeft={false} overshootRight={false} renderLeftActions={renderLeftActions}>
-							<View style={styles.dataContainer}>
-								<View
-									style={[
-										styles.notificationContainer,
-										{
-											borderBottomWidth: index === notificatinData.length - 1 ? 0 : 1,
-											paddingBottom: index === notificatinData.length - 1 ? 0 : 20
-										}
-									]}>
-									<Ionicons name='ios-notifications' size={24} color='#32343E' />
-									<View style={styles.notificationTextContainer}>
-										<Text style={styles.notificationTitle}>{item.title}</Text>
-										<Text style={styles.notificationTime}>{item.minute}</Text>
-										<Text style={styles.notificationDescription}>{item.description}</Text>
-									</View>
+						<Swipeable overshootLeft key={item.id} renderLeftActions={renderLeftActions}>
+							<View
+								style={[
+									styles.notificationContainer,
+									{
+										borderBottomWidth: index === notificatinData.length - 1 ? 0 : 1,
+										paddingBottom: index === notificatinData.length - 1 ? 0 : 20
+									}
+								]}>
+								<Ionicons name='ios-notifications' size={24} color='#32343E' />
+								<View style={styles.notificationTextContainer}>
+									<Text style={styles.notificationTitle}>{item.title}</Text>
+									<Text style={styles.notificationTime}>{item.minute}</Text>
+									<Text style={styles.notificationDescription}>{item.description}</Text>
 								</View>
 							</View>
 						</Swipeable>

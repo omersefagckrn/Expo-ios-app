@@ -12,7 +12,7 @@ const Panel: React.FC<AuthPanel> = ({ title, subTitle, children }) => {
 				<Text style={styles.title}>{title}</Text>
 				<Text style={styles.subTitle}>{subTitle}</Text>
 			</SafeAreaView>
-			<KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.bottomContainer}>
+			<KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.bottomContainer}>
 				{children}
 			</KeyboardAvoidingView>
 		</View>
