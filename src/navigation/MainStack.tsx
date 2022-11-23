@@ -5,6 +5,8 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
+import type { IconProps } from 'react-native-paper/lib/typescript/components/MaterialCommunityIcon';
+
 export type BottomTabParamList = {
 	Home: undefined;
 	Profile: undefined;
@@ -25,7 +27,7 @@ const MainStack: React.FC = () => {
 			}}
 			screenOptions={({ route }) => ({
 				tabBarIcon: ({ focused, color }) => {
-					let iconName: string = '';
+					let iconName: IconProps['name'] = '';
 
 					if (route.name === 'Home') {
 						iconName = focused ? 'ios-home' : 'ios-home-outline';

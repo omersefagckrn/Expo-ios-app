@@ -8,6 +8,7 @@ export type ModalStackParamList = {
 	Basket: undefined;
 	Payment: undefined;
 	AddCard: undefined;
+	ProfileInformation: undefined;
 };
 
 const Stack = createNativeStackNavigator<ModalStackParamList>();
@@ -78,6 +79,27 @@ const ModalStack: React.FC = () => {
 					})}
 					name='AddCard'
 					component={Pages.AddCard}
+				/>
+				<Stack.Screen
+					options={({ navigation }) => ({
+						headerStyle: {
+							backgroundColor: '#181C2E'
+						},
+						headerTitle: 'Profil Bilgilerim',
+						headerTitleAlign: 'center',
+						headerTitleStyle: {
+							color: '#FFFFFF',
+							fontSize: 16,
+							fontWeight: '400',
+							fontFamily: 'Sen-Bold'
+						},
+						headerTintColor: '#FFFFFF',
+						headerLeft: () => {
+							return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
+						}
+					})}
+					name='ProfileInformation'
+					component={Pages.ProfileInformation}
 				/>
 			</Stack.Group>
 		</Stack.Navigator>

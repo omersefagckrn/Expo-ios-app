@@ -8,6 +8,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NoticationsProps } from '../../@types/pages/Notifications/Notifications';
 import { styles } from './style';
 
+import * as Haptics from 'expo-haptics';
+
 const notificatinData = [
 	{
 		id: 1,
@@ -41,13 +43,18 @@ const Notifications: React.FC<NoticationsProps<'Notifications'>> = () => {
 		wait(1000).then(() => setRefreshing(false));
 	}, []);
 
-	const renderLeftActions = (progress: any, dragX: any) => {
+	const renderLeftActions = (progress: Animated.AnimatedInterpolation, dragX: Animated.AnimatedInterpolation) => {
 		const scale = dragX.interpolate({
 			inputRange: [0, 100],
 			outputRange: [0, 1]
 		});
 		return (
-			<TouchableOpacity style={styles.animatedLeftBar}>
+			<TouchableOpacity
+				onPress={() => {
+					Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+					console.log('sil');
+				}}
+				style={styles.animatedLeftBar}>
 				<Animated.Text
 					style={[
 						styles.anitmatedText,

@@ -13,3 +13,4 @@ export { default as Onboarding } from './Onboarding/Panel';
 export { default as Basket } from './Modal/Basket/Basket';
 export { default as Payment } from './Modal/Payment/Payment';
 export { default as AddCard } from './Modal/AddCard/AddCard';
+export { default as ProfileInformation } from './Modal/ProfileInformation/ProfileInformation';

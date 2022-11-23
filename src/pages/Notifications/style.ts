@@ -60,6 +60,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: colors.primary,
-		width: '20%'
+		minWidth: 40
 	}
 });
