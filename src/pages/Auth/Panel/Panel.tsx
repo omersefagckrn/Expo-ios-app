@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { KeyboardAvoidingView, Platform, SafeAreaView, Text, View } from 'react-native';
 
-import type { AuthPanel } from '../../../@types/pages';
+import type { AuthPanelProps } from '../../../@types/pages';
 
 import { styles } from './style';
 
-const Panel: React.FC<AuthPanel> = ({ title, subTitle, children }) => {
+const Panel: React.FC<AuthPanelProps> = ({ title, subTitle, children }) => {
 	return (
 		<View style={styles.container}>
 			<SafeAreaView style={styles.tabContainer}>

@@ -17,10 +17,10 @@ const App: React.FC = () => {
 	}
 
 	return (
-		<React.Fragment>
+		<>
 			<RootStack />
 			<Toast position='top' autoHide visibilityTime={2000} />
-		</React.Fragment>
+		</>
 	);
 };
 

@@ -50,7 +50,15 @@ const Profile: React.FC<ProfileProps<'Profile'>> = ({ navigation, route }) => {
 						}}
 					/>
 					<Menu icon={require('../../assets/icons/Profile/Favorites.png')} title='Favorilerim' onPress={() => {}} />
-					<Menu icon={require('../../assets/icons/Profile/Address.png')} title='Adreslerim' onPress={() => {}} />
+					<Menu
+						icon={require('../../assets/icons/Profile/Address.png')}
+						title='Adreslerim'
+						onPress={() => {
+							navigation.navigate('Modal', {
+								screen: 'AddressInformation'
+							});
+						}}
+					/>
 					<Menu icon={require('../../assets/icons/Profile/PaymentMethods.png')} title='Ödeme yöntemlerim' onPress={() => {}} />
 					<Menu icon={require('../../assets/icons/Profile/Logout.png')} title='Çıkış Yap' onPress={() => {}} />
 				</View>

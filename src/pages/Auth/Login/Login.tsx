@@ -7,6 +7,7 @@ import { Input, Button } from '../../../components';
 import AuthPanel from '../Panel/Panel';
 
 import { styles } from './style';
+import { LoginProps } from '../../../@types/pages/Auth/Login';
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().email('Geçersiz Email.').required('Lütfen email giriniz.'),
@@ -18,7 +19,7 @@ interface Values {
 	password: string;
 }
 
-const Login: React.FC = () => {
+const Login: React.FC<LoginProps<'Login'>> = ({ navigation, route }) => {
 	const onSubmit = (values: Values) => {
 		console.log(values);
 	};
@@ -59,7 +60,15 @@ const Login: React.FC = () => {
 						</View>
 
 						<View style={styles.OrContainer}>
-							<Text style={styles.Or}>Ya da</Text>
+							<Text
+								onPress={() => {
+									navigation.navigate('Main', {
+										screen: 'Home'
+									});
+								}}
+								style={styles.Or}>
+								Ana Sayfaya Git
+							</Text>
 						</View>
 
 						<View style={styles.IconContainer}>

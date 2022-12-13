@@ -17,8 +17,7 @@ export const styles = StyleSheet.create({
 		padding: 14,
 		backgroundColor: colors.white,
 		/* @ts-ignore */
-		borderRadius: '100%',
-		alignItems: 'center'
+		borderRadius: '100%'
 	},
 	menuIcon: {
 		width: 18,

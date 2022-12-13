@@ -9,6 +9,8 @@ export type ModalStackParamList = {
 	Payment: undefined;
 	AddCard: undefined;
 	ProfileInformation: undefined;
+	EditProfile: undefined;
+	AddressInformation: undefined;
 };
 
 const Stack = createNativeStackNavigator<ModalStackParamList>();
@@ -16,90 +18,64 @@ const Stack = createNativeStackNavigator<ModalStackParamList>();
 const ModalStack: React.FC = () => {
 	return (
 		<Stack.Navigator>
-			<Stack.Group>
+			<Stack.Group
+				screenOptions={({ navigation }) => ({
+					headerStyle: {
+						backgroundColor: '#181C2E'
+					},
+					headerTitleAlign: 'center',
+					headerTitleStyle: {
+						color: '#FFFFFF',
+						fontSize: 16,
+						fontWeight: '400',
+						fontFamily: 'Sen-Bold'
+					},
+					headerTintColor: '#FFFFFF',
+					headerLeft: () => {
+						return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
+					}
+				})}>
 				<Stack.Screen
-					options={({ navigation }) => ({
-						headerStyle: {
-							backgroundColor: '#181C2E'
-						},
-						headerTitle: 'Sepetim',
-						headerTitleAlign: 'center',
-						headerTitleStyle: {
-							color: '#FFFFFF',
-							fontSize: 16,
-							fontWeight: '400',
-							fontFamily: 'Sen-Bold'
-						},
-						headerTintColor: '#FFFFFF',
-						headerLeft: () => {
-							return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
-						}
-					})}
+					options={{
+						headerTitle: 'Sepetim'
+					}}
 					name='Basket'
 					component={Pages.Basket}
 				/>
 				<Stack.Screen
-					options={({ navigation }) => ({
-						headerStyle: {
-							backgroundColor: '#181C2E'
-						},
-						headerTitle: 'Ödeme Yap',
-						headerTitleAlign: 'center',
-						headerTitleStyle: {
-							color: '#FFFFFF',
-							fontSize: 16,
-							fontWeight: '400',
-							fontFamily: 'Sen-Bold'
-						},
-						headerTintColor: '#FFFFFF',
-						headerLeft: () => {
-							return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
-						}
-					})}
+					options={{
+						headerTitle: 'Ödeme Yap'
+					}}
 					name='Payment'
 					component={Pages.Payment}
 				/>
 				<Stack.Screen
-					options={({ navigation }) => ({
-						headerStyle: {
-							backgroundColor: '#181C2E'
-						},
-						headerTitle: 'Kart Ekle',
-						headerTitleAlign: 'center',
-						headerTitleStyle: {
-							color: '#FFFFFF',
-							fontSize: 16,
-							fontWeight: '400',
-							fontFamily: 'Sen-Bold'
-						},
-						headerTintColor: '#FFFFFF',
-						headerLeft: () => {
-							return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
-						}
-					})}
+					options={{
+						headerTitle: 'Kart Ekle'
+					}}
 					name='AddCard'
 					component={Pages.AddCard}
 				/>
 				<Stack.Screen
-					options={({ navigation }) => ({
-						headerStyle: {
-							backgroundColor: '#181C2E'
-						},
-						headerTitle: 'Profil Bilgilerim',
-						headerTitleAlign: 'center',
-						headerTitleStyle: {
-							color: '#FFFFFF',
-							fontSize: 16,
-							fontWeight: '400',
-							fontFamily: 'Sen-Bold'
-						},
-						headerTintColor: '#FFFFFF',
-						headerLeft: () => {
-							return <Ionicons onPress={() => navigation.goBack()} name='chevron-back' size={24} color='#FFFFFF' />;
-						}
-					})}
+					options={{
+						headerTitle: 'Profil Bilgilerim'
+					}}
 					name='ProfileInformation'
 					component={Pages.ProfileInformation}
+				/>
+				<Stack.Screen
+					options={{
+						headerTitle: 'Profilini Düzenle'
+					}}
+					name='EditProfile'
+					component={Pages.EditProfile}
+				/>
+				<Stack.Screen
+					options={{
+						headerTitle: 'Adres Bilgilerim'
+					}}
+					name='AddressInformation'
+					component={Pages.AddressInformation}
 				/>
 			</Stack.Group>
 		</Stack.Navigator>

@@ -7,9 +7,11 @@ import { Input, Button } from '../../../components';
 import AuthPanel from '../Panel/Panel';
 
 import { styles } from './style';
+import { RegisterProps } from '../../../@types/pages/Auth/SignUp';
 
 const validationSchema = Yup.object().shape({
-	fullName: Yup.string().required('Lütfen tam adınızı giriniz.'),
+	name: Yup.string().required('Lütfen adınızı giriniz.'),
+	surname: Yup.string().required('Lütfen soyadınızı giriniz.'),
 	email: Yup.string().required('Lütfen email giriniz.').email('Geçersiz Email.'),
 	password: Yup.string().required('Lütfen şifre giriniz.'),
 	reTypePassword: Yup.string()
@@ -18,13 +20,14 @@ const validationSchema = Yup.object().shape({
 });
 
 interface Values {
-	fullName: string;
+	name: string;
+	surname: string;
 	email: string;
 	password: string;
 	reTypePassword: string;
 }
 
-const Login: React.FC = () => {
+const Login: React.FC<RegisterProps<'Register'>> = () => {
 	const onSubmit = (values: Values) => {
 		console.log(values);
 	};
@@ -34,7 +37,7 @@ const Login: React.FC = () => {
 				<Formik
 					validateOnBlur={false}
 					validateOnChange={false}
-					initialValues={{ fullName: '', email: '', password: '', reTypePassword: '' }}
+					initialValues={{ name: '', surname: '', email: '', password: '', reTypePassword: '' }}
 					validationSchema={validationSchema}
 					onSubmit={(values: Values, { resetForm }: FormikHelpers<Values>) => {
 						resetForm();
@@ -43,9 +46,14 @@ const Login: React.FC = () => {
 					{({ handleSubmit, handleChange, values, errors }: { handleSubmit: () => void; handleChange: FormikHandlers['handleChange']; values: Values; errors: FormikErrors<Values> }) => (
 						<ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
 							<View style={styles.inputContainer}>
-								<Text style={styles.label}>İsim</Text>
-								<Input placeholder='İsim' onChangeText={handleChange('fullName')} value={values.fullName} />
-								{errors.fullName && <Text style={styles.error}>{errors?.fullName}</Text>}
+								<Text style={styles.label}>Ad</Text>
+								<Input placeholder='Ad' onChangeText={handleChange('name')} value={values.name} />
+								{errors.name && <Text style={styles.error}>{errors?.name}</Text>}
+							</View>
+							<View style={styles.inputContainer}>
+								<Text style={styles.label}>Soyad</Text>
+								<Input placeholder='Soyad' onChangeText={handleChange('surname')} value={values.surname} />
+								{errors.surname && <Text style={styles.error}>{errors?.surname}</Text>}
 							</View>
 							<View style={styles.inputContainer}>
 								<Text style={styles.label}>E-posta</Text>

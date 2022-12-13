@@ -1,4 +1,4 @@
-import { AuthPanel } from './Auth/Panel';
+import { AuthPanelProps } from './Auth/Panel';
 import { HomeProps } from './Home/Home';
 
-export { HomeProps, AuthPanel };
+export { HomeProps, AuthPanelProps };
