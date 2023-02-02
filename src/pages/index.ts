@@ -16,3 +16,4 @@ export { default as AddCard } from './Modal/AddCard/AddCard';
 export { default as ProfileInformation } from './Modal/ProfileInformation/ProfileInformation';
 export { default as EditProfile } from './Modal/EditProfile/EditProfile';
 export { default as AddressInformation } from './Modal/AddressInformation/AddressInformation';
+export { default as EditAddress } from './Modal/EditAddress/EditAddress';

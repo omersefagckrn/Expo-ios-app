@@ -11,6 +11,7 @@ export type ModalStackParamList = {
 	ProfileInformation: undefined;
 	EditProfile: undefined;
 	AddressInformation: undefined;
+	EditAddress: undefined;
 };
 
 const Stack = createNativeStackNavigator<ModalStackParamList>();
@@ -76,6 +77,13 @@ const ModalStack: React.FC = () => {
 					}}
 					name='AddressInformation'
 					component={Pages.AddressInformation}
+				/>
+				<Stack.Screen
+					options={{
+						headerTitle: 'Adresini düzenle'
+					}}
+					name='EditAddress'
+					component={Pages.EditAddress}
 				/>
 			</Stack.Group>
 		</Stack.Navigator>

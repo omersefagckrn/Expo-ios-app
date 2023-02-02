@@ -21,7 +21,7 @@ const options: NativeStackNavigationOptions = {
 const RootStack: React.FC = () => {
 	return (
 		<NavigationContainer>
-			<Root.Navigator initialRouteName='Auth' screenOptions={options}>
+			<Root.Navigator initialRouteName='Main' screenOptions={options}>
 				<Root.Screen name='Main' component={MainStack} />
 				<Root.Screen name='Modal' component={ModalStack} />
 				<Root.Screen name='Auth' component={AuthStack} />
